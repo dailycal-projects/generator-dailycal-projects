@@ -83,7 +83,7 @@ button {
 
 // Paragraphs
 p {
-  font-family: $tisa;
+  font-family: $serif;
   font-size: 1.2em;
   line-height: 1.618em;
   margin: 1.618em auto;
@@ -105,7 +105,7 @@ p {
     float: left;
     font-size: 90px;
     line-height: 0.85em;
-    font-family: $tablet;
+    font-family: $serif;
     margin-right: 0.115em;
     color: $black;
     text-transform: uppercase;
@@ -118,7 +118,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: $proxima;
+  font-family: $sans;
   margin: 0 auto 3px;
   max-width: 100%;
   text-align: center;

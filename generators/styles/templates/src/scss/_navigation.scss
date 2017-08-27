@@ -1,15 +1,18 @@
 #global-header {
   @include clearfix;
-  background: $politico-red;
+  background: $dc-purple;
+  height: 45px;
 
   #global-header, ul {
     @include clearfix;
   }
 
-  .icon-politico {
-    font-size: 16px;
-    line-height: 46px;
-    margin-left: .7em;
+  .navbar-dc-logo {
+    font-family: Georgia;
+    font-variant: small-caps;
+    font-size: 1.25em;
+    margin-top: .4em;
+    margin-left: .5em;
   }
 
   a {
@@ -23,6 +26,14 @@
 
   #global-branding {
     float: left;
+  }
+
+  #projects-branding {
+    float: right;
+    font-family: helvetica neue;
+    font-weight: 200;
+    letter-spacing: 2px;
+    text-transform: uppercase;
   }
 
   #nav-micro {
