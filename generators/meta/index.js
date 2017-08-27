@@ -18,7 +18,7 @@ module.exports = class extends Generator {
 
     const timestamp = new Date();
     const publishPath = `${timestamp.getFullYear()}/${this.slug}/`;
-    const url = `http://www.politico.com/interactives/${publishPath}`;
+    const url = `http://projects.dailycal.org/${publishPath}`;
 
     this.fs.copy(
       this.templatePath('gitignore'),

@@ -36,7 +36,7 @@ module.exports = class extends Generator {
 
   validateKeys() {
     this.secure = new SecureKeys({ secret: this.options.passphrase });
-    this.keyPath = path.join(os.homedir(), '.politico/interactives.json');
+    this.keyPath = path.join(os.homedir(), '.dailycal/projects-credentials.json');
 
     try {
       const keysObj = fs.readJsonSync(this.keyPath);
@@ -67,7 +67,7 @@ module.exports = class extends Generator {
 
     try {
       github.repos.createForOrg({
-        org: 'The-Politico',
+        org: 'dailycal-projects',
         name: this.answers.repo,
         private: true,
       }).then((p) => {

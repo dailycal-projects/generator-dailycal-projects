@@ -19,7 +19,7 @@ module.exports = class extends Generator {
 
   validateKeys() {
     this.secure = new SecureKeys({ secret: this.options.passphrase });
-    this.keyPath = path.join(os.homedir(), '.politico/interactives.json');
+    this.keyPath = path.join(os.homedir(), '.dailycal/projects-credentials.json');
 
     try {
       const keysObj = fs.readJsonSync(this.keyPath);
@@ -76,7 +76,7 @@ module.exports = class extends Generator {
   writing() {
     if (this.validKeys || !this.answers.write) return;
 
-    mkdirp(path.join(os.homedir(), '.politico/'));
+    mkdirp(path.join(os.homedir(), '.dailycal/'));
 
     fs.writeJsonSync(this.keyPath, this.secure.encrypt({
       awsAccessKey: this.answers.awsAccessKey,
@@ -84,8 +84,8 @@ module.exports = class extends Generator {
       googleClientId: this.answers.googleClientId,
       googleClientSecret: this.answers.googleClientSecret,
       githubToken: this.answers.githubToken,
-      slackToken: this.answers.slackToken,
-      ngrokToken: this.answers.ngrokToken,
+      //slackToken: this.answers.slackToken,
+      //ngrokToken: this.answers.ngrokToken,
     }));
   }
 
@@ -93,6 +93,6 @@ module.exports = class extends Generator {
     if (this.validKeys || !this.answers.write) return;
     this.log(
       'New keys encrypted and saved to',
-      chalk.yellow('~/.politico/interactives.json.'));
+      chalk.yellow('~/.dailycal/projects-credentials.json.'));
   }
 };

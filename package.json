@@ -1,6 +1,6 @@
 {
-  "name": "generator-politico-interactives",
-  "description": "Yeoman generator for interactive projects at POLITICO.",
+  "name": "generator-dailycal-projects",
+  "description": "Yeoman generator for interactive projects at The Daily Californian.",
   "version": "0.5.1",
   "main": "generators/app/index.js",
   "scripts": {
@@ -13,14 +13,14 @@
     "yeoman-generator"
   ],
   "author": {
-    "name": "Jon McClure",
-    "email": "jmcclure@politico.com",
-    "url": "https://github.com/The-Politico"
+    "name": "Sahil Chinoy",
+    "email": "schinoy@dailycal.org",
+    "url": "https://github.com/dailycal-projects"
   },
   "license": "ISC",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/The-Politico/generator-politico-interactives.git"
+    "type": "git",
+    "url": "https://github.com/dailycal-projects/generator-dailycal-projects.git"
   },
   "dependencies": {
     "chalk": "^1.1.3",
