@@ -19,17 +19,15 @@
         <link href="css/main-app.css" rel="stylesheet">
         {% endif %}
         <!-- Google fonts -->
-         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <!-- Font awesome -->
+        <script src="https://use.fontawesome.com/6c4d370962.js"></script>
         <!-- jQuery -->
         <script
           src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
           integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
           crossorigin="anonymous">
         </script>
-        <!--Typekit-->
-        <script src="https://use.typekit.net/you6ipe.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
-        <!-- end -->
     </head>
     <body>
         {%block nav%}
@@ -42,10 +40,12 @@
                    </a>
                   </div>
                 </div>
-                
-                <!--<div id="projects-branding">
-                  <a href="https://dailycal-projects.tumblr.com/" title="The Daily Californian Projects Team" target="_top">Projects</a>
-                </div>-->
+
+                <ul class="nav navbar-nav navbar-right">
+                <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ META.url | urlencode }}"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="https://twitter.com/intent/tweet?url={{ META.url | urlencode }}&amp;via=dailycal&amp;text={{META.share.twitter.share_tweet | urlencode}}"><i class="fa fa-twitter"></i></a></li>
+                </ul>
+
             </div>
         </nav>
         {%endblock%}
@@ -70,7 +70,5 @@
 
          <script type="text/javascript">window.tweetText = "{{META.share.twitter.share_tweet}}";</script>
          <script type="text/javascript" src="js/main-app.bundle.js"></script>
-         {% include "meta/telium.html" %}
-         {% include "ads/script.html" %}
     </body>
 </html>

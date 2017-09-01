@@ -14,7 +14,7 @@
     <p class="subhead">{{ARCHIE.subhead}}</p>
     <div class="info">
         <p>
-            By <span class="byline"><a href="###">First Lastname</a></span> and <span class="byline"><a href="###">First Lastname</a></span> <br /> <span class="timestamp"> <time datetime="{{META.timestamp}}">{{ARCHIE.dateline}}</time></span>
+            By <span class="byline"><a href="###">First Lastname</a></span> and <span class="byline"><a href="###">First Lastname</a></span> <br /> <span class="timestamp"> <time datetime="{{META.timestamp}}">{{ARCHIE.dateline | upper}}</time></span>
         </p>
     </div>
 </header>
@@ -25,46 +25,9 @@
 {%endblock%}
 
 {%block content%}
-<p><span class="dropcap">G</span>eorge Washington (February 11, 1731) was an American politician and soldier who served as the first President of the United States from 1789 to 1797 and was one of the Founding Fathers of the United States.</p>
 
-<p>Historians laud Washington for the selection and supervision of his generals; preservation and command of the army; coordination with the Congress, state governors, and their militia; and attention to supplies, logistics, and training. In battle, however, Washington was repeatedly outmaneuvered by British generals with larger armies.</p>
-
-<section>
-<h5>Header 5 is good for tags or dates</h5>
-<h4>All headers are sans, like this h4 </h4>
-<h3>This is an H3</h3>
-<h2>This is an H2</h2>
-</section>
-
-<p>Historians laud Washington for the selection and supervision of his generals; preservation and command of the army; coordination with the Congress, state governors, and their militia; and attention to supplies, logistics, and training. In battle, however, Washington was repeatedly outmaneuvered by British generals with larger armies.</p>
-
-<h2>This is also an h2</h2>
-<p>Historians laud Washington for the selection and supervision of his generals; preservation and command of the army; coordination with the Congress, state governors, and their militia; and attention to supplies, logistics, and training. In battle, however, Washington was repeatedly outmaneuvered by British generals with larger armies.</p>
-
-<h3>This is an h3</h3>
-<p class="sans">Historians laud Washington for the selection and supervision of his generals; preservation and command of the army; coordination with the Congress, state governors, and their militia; and attention to supplies, logistics, and training. In battle, however, Washington was repeatedly outmaneuvered by British generals with larger armies.</p>
-
-<section>
-<h2 class="serif content-fit">For serif add a .serif class</h2>
- <p>this is in a section, does it look weird? nd of the army; coordination with the Congress, state governors, and their militia; and attention to supplies, logistics, and training. In battle, however, Washington was repeatedly outmaneuvered by British generals with larger armies.</p>
-<section>
-
-<section>
-<h2>H2 No gutters phone example</h2>
-<figure class="no-gutters-phone">
-  <img src="https://static.politico.com/dims4/default/00bb1f8/2147483647/resize/1160x%3E/quality/90/?url=http%3A%2F%2Fstatic.politico.com%2Fe6%2F99%2Fcd6aa5bc43dcb92588f25d90f16d%2Fgoldsmith-photogallery-13.jpg" />
-    <figcaption class="figcaption">Caption text here. <figcredit> | John Shinkle/POLITICO </figcredit>
-    </figcaption>
-</figure>
-
-<p>At 26, he married Martha Dandridge Custis, a widow who already had two children, Jacky and Patsy. Washington never had any children of his own.</p>
-</section>
-
-<h3 class="align-left content-fit">This is an h3 .align-left .content-fit</h5>
-<p class="sans">This is a paragraph with .sans appended. The death of his father prevented Washington from an education at England's Appleby School such as his older brothers had received.</p>
-
-<section class="credits">
-    <p>Produced by <a target="blank" href="###">Firstname Lastname</a>.</p>
-</section>
+{% for section in ARCHIE.sections %}
+    {% include '_sections/' + section.type +'.html' %}
+{% endfor %}
 
 {%endblock%}

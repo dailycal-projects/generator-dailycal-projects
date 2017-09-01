@@ -1,7 +1,7 @@
 #global-header {
   @include clearfix;
   background: $dc-purple;
-  height: 45px;
+  height: 50px;
 
   #global-header, ul {
     @include clearfix;
@@ -11,8 +11,8 @@
     font-family: Georgia;
     font-variant: small-caps;
     font-size: 1.25em;
-    margin-top: .4em;
-    margin-left: .5em;
+    //margin-top: .4em;
+    margin-left: 1em;
   }
 
   a {
@@ -28,12 +28,17 @@
     float: left;
   }
 
-  #projects-branding {
+  .navbar-right {
     float: right;
-    font-family: helvetica neue;
-    font-weight: 200;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    
+    margin-right: 1em;
+
+    li > a:hover {
+      background: $dc-purple;
+    }
+    li {
+      float: left;
+    }
   }
 
   #nav-micro {

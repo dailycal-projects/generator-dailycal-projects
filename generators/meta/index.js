@@ -52,14 +52,11 @@ module.exports = class extends Generator {
       share: {
         fbook: {
           card_title: this.title,
-          card_description: 'The latest news from POLITICO.',
-          author: 'politico',
+          card_description: 'UC Berkeley\'s independent student-run newspaper'
         },
         twitter: {
           card_title: this.title,
-          share_tweet: 'The latest news from POLITICO.',
-          card_description: 'The latest news from POLITICO.',
-          author: '@politico',
+          share_tweet: 'UC Berkeley\'s independent student-run newspaper'
         },
         image: {
           url: `${url}images/share.jpg`,
@@ -68,16 +65,8 @@ module.exports = class extends Generator {
           width: '600',
           height: '300',
         },
-        keywords: 'POLITICO, News, Washington D.C.',
-      },
-      telium: {
-        free_paid_content: 'free',
-        site_section: 'white house',
-        ad_unit_section: 'whitehouse',
-        content_author: 'Polly Politico|Peter Politico',
-        content_byline: 'By Polly Politico and Peter Politico',
-        page_name: `${this.title} — POLITICO`,
-      },
+        keywords: 'Daily Cal, news',
+      }
     };
 
     this.fs.writeJSON('meta.json', metaJSON);

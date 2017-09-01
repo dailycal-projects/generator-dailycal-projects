@@ -13,6 +13,10 @@
     font-size: 0.8em;
     font-family: $sans;
     margin: 0 auto;
+
+    @media (max-width: $width-medium) {
+      font-size: 0.7em;
+    }
   }
 
   a {
