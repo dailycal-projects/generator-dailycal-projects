@@ -17,12 +17,6 @@ module.exports = class extends Generator {
     const questions = [
       {
         type: 'confirm',
-        name: 'archie',
-        message: 'Would you like to include an ArchieML configuration?',
-        default: false,
-      },
-      {
-        type: 'confirm',
         name: 'spreadsheet',
         message: 'Would you like Google Spreadsheet integration?',
         default: false
@@ -30,20 +24,16 @@ module.exports = class extends Generator {
     ];
 
     return this.prompt(questions).then((answers) => {
-      this.archie = answers.archie;
       this.spreadsheet = answers.spreadsheet
     });
   }
 
   template() {
-    this.composeWith(require.resolve('../bundler-webpack'), {
-      archie: this.archie
-    });
+    this.composeWith(require.resolve('../bundler-webpack'));
     this.composeWith(require.resolve('../gulp'), {
-      archie: this.archie,
       spreadsheet: this.spreadsheet
     });
-    if (this.archie) this.composeWith(require.resolve('../archie'));
+    this.composeWith(require.resolve('../archie'));
     if (this.spreadsheet) this.composeWith(require.resolve('../spreadsheet'));
   }
 
@@ -86,8 +76,8 @@ module.exports = class extends Generator {
     // Images directories
     mkdirp('./src/images');
     this.fs.copy(
-      this.templatePath('dist/images/sproul.jpg'),
-      this.destinationPath('dist/images/sproul.jpg'));
+      this.templatePath('src/images/sproul.jpg'),
+      this.destinationPath('src/images/sproul.jpg'));
     // Javascript
     this.fs.copy(
       this.templatePath('src/js/main-app.js'),

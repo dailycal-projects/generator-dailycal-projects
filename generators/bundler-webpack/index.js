@@ -4,13 +4,7 @@ const mkdirp = require('mkdirp');
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-
-    this.option('archie', {
-      type: Boolean,
-      required: false,
-      default: false,
-      desc: 'Use ArchieML',
-    });
+    
     this.option('context', {
       type: Boolean,
       required: false,
@@ -50,9 +44,8 @@ module.exports = class extends Generator {
     if (this.options.context) {
       this.fs.copyTpl(
         this.templatePath('server/context.js'),
-        this.destinationPath('server/context.js'), {
-          archie: this.options.archie,
-        });
+        this.destinationPath('server/context.js')
+      );
     }
   }
 

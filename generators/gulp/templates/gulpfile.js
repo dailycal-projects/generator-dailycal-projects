@@ -8,7 +8,7 @@ const gutil = require('gulp-util');
 const envFile = require('node-env-file');
 const gulp = require('./gulp')([
   'aws',
-  <% if (archie) { %>'archie',<% } %>
+  'archie',
   'build',
   'dev',
   'dist',
@@ -35,7 +35,6 @@ try {
   // Exit process if keys don't validate
   process.exit();
 }
-
 
 gulp.task('default', ['dev']);
 

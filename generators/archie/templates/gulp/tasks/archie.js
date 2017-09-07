@@ -9,6 +9,4 @@ module.exports = (cb) => {
     exportPath: path.join(process.cwd(), 'src/data/archie.json'),
   });
   cb();
-
-  process.exit();
 };

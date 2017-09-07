@@ -57,7 +57,8 @@ module.exports = class extends Generator {
       name: 'githubToken',
       message: 'What\'s your Github token?',
       when: a => a.write,
-    }, {
+    }, 
+    /*{
       name: 'slackToken',
       message: 'What\'s your Slack API token?',
       when: a => a.write,
@@ -65,8 +66,9 @@ module.exports = class extends Generator {
       name: 'ngrokToken',
       message: 'What\'s your ngrok token?',
       when: a => a.write,
-    }];
-
+    }*/
+    ];
+    
     return this.validKeys ? null :
       this.prompt(questions).then((answers) => {
         this.answers = answers;

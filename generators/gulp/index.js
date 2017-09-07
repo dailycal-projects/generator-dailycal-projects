@@ -4,13 +4,6 @@ module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('archie', {
-      type: Boolean,
-      required: false,
-      default: false,
-      desc: 'Use ArchieML',
-    });
-
     this.option('spreadsheet', {
       type: Boolean,
       required: false,
@@ -43,13 +36,10 @@ module.exports = class extends Generator {
     this.fs.copyTpl(
       this.templatePath('gulpfile.js'),
       this.destinationPath('gulpfile.js'), {
-        archie: this.options.archie,
         spreadsheet: this.options.spreadsheet
       });
-
-    if (this.archie) {
-      this.fs.writeJSON('src/data/archie.json', {});
-    }
+    
+    this.fs.writeJSON('src/data/archie.json', {});
 
     if (this.spreadsheet) {
       this.fs.writeJSON('src/data/data.json', {});
