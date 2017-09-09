@@ -1,4 +1,4 @@
-# interactive_<%= slug %>
+# <%= slug %>
 
 | Title | <%= title %> |
 |-|-|

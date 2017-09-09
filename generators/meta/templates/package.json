@@ -1,7 +1,7 @@
 {
-  "name": "politico-interactive-<%=slug%>",
+  "name": "dailycal-projects-<%=slug%>",
   "version": "1.0.0",
-  "description": "A Politico interactive",
+  "description": "A Daily Cal project",
   "main": "index.js",
   "scripts": {
     "test": "echo \"No tests\" && exit 1"
