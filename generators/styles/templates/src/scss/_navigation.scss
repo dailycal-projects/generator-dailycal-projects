@@ -1,6 +1,6 @@
 #global-header {
   @include clearfix;
-  background: $dc-purple;
+  background: $dc-dark-blue;
   height: 50px;
 
   #global-header, ul {
@@ -34,7 +34,7 @@
     margin-right: 1em;
 
     li > a:hover {
-      background: $dc-purple;
+      background: $dc-dark-blue;
     }
     li {
       float: left;
