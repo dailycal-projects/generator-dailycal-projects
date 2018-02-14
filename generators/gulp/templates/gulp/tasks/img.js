@@ -12,17 +12,7 @@ module.exports = () => {
     return gulp.src('./src/images/**/*.jpg')
       .pipe(gulpif(images, responsive({
         '*': [{
-          width: 400,
-          rename: { suffix: '-400' },
-        }, {
-          width: 800,
-          rename: { suffix: '-800' },
-        }, {
           width: 1200,
-          rename: { suffix: '-1200' },
-        }, {
-          width: 1800,
-          rename: { suffix: '-1800' },
         }],
       }, {
         quality: 70,
@@ -31,6 +21,12 @@ module.exports = () => {
         withoutEnlargement: true,
         errorOnEnlargement: false,
       })))
+      .pipe(gulp.dest('./dist/images'));
+  });
+  glob('./src/images/**/*.png', (er, files) => {
+    if (files.length > 0) images = true;
+
+    return gulp.src('./src/images/**/*.png')
       .pipe(gulp.dest('./dist/images'));
   });
 }

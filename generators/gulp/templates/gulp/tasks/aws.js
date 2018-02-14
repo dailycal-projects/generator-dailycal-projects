@@ -11,7 +11,7 @@ const path = require('path');
 const open = require('open');
 const revAll = require('gulp-rev-all');
 const querystring = require('querystring');
-const { argv } = require('yargs');
+const argv = require('yargs').argv;
 
 const prod = argv.prod || false
 
@@ -72,9 +72,10 @@ module.exports = (cb) => {
     .pipe(awspublish.reporter())
     .on('end', () => {
       setTimeout(() => {
-        const q = querystring.stringify({ q: meta.url });
+        const url = "http://" + awsBucket + "/" + meta.publishPath
+        const q = querystring.stringify({ q: url });
         open(`https://developers.facebook.com/tools/debug/sharing/?${q}`);
-        open(meta.url);
+        open(url);
       }, 1000);
     });
 };
