@@ -10,10 +10,9 @@ module.exports = {
   entry: _.zipObject(
     glob.sync('./src/js/main-*.js*').map(f => path.basename(f, path.extname(f))),
     glob.sync('./src/js/main-*.js*').map(f => [
-      `webpack-hot-middleware/client?reload=true`,
-      f
-    ])
-  ),
+      'webpack-hot-middleware/client?reload=true',
+      f,
+    ])),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'js/[name].bundle.js',
@@ -21,25 +20,37 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
+        test: /\.(js|jsx)$/,
         use: {
           loader: 'babel-loader',
+          options: {
+            presets: [
+              ['@babel/preset-env', {
+                targets: {
+                  browsers: 'last 2 versions',
+                },
+              }],
+              '@babel/preset-react',
+            ],
+            plugins: [
+              '@babel/proposal-class-properties',
+            ],
+          },
         },
       },
       {
-        test: /\.scss$/,
+        test: /\.s*css$/,
         use: [
           {
-            loader: 'style-loader'
-          }, 
-          {
-            loader: 'postcss-loader'
+            loader: 'style-loader',
           },
           {
-            loader: 'sass-loader'
-          }
-        ]
+            loader: 'postcss-loader',
+          },
+          {
+            loader: 'sass-loader',
+          },
+        ],
       },
     ],
   },
@@ -47,8 +58,8 @@ module.exports = {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProvidePlugin({
-      'fetch': 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
-    })
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
+    }),
   ],
   stats: 'minimal',
   devtool: 'cheap-module-eval-source-map',

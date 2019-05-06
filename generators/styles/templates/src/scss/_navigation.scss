@@ -2,17 +2,16 @@
   @include clearfix;
   background: $dc-dark-blue;
   height: 50px;
+  z-index: 100;
 
   #global-header, ul {
     @include clearfix;
   }
 
-  .navbar-dc-logo {
-    font-family: Georgia;
-    font-variant: small-caps;
-    font-size: 1.25em;
-    //margin-top: .4em;
+  img.navbar-brand {
     margin-left: 1em;
+    height: 43px;
+    margin-top: 4px; 
   }
 
   a {

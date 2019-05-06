@@ -14,7 +14,7 @@ module.exports = {
       META: meta,
       DATA: contextData,
       ARCHIE: archie,
-      ENV: process.env.NODE_ENV
+      ENV: process.env.NODE_ENV,
     };
 
     return templateContext;

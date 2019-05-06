@@ -11,7 +11,7 @@ module.exports = class extends Generator {
     const questions = [{
       type: 'input',
       name: 'title',
-      message: 'Welcome to your new project. What will we call it?',
+      message: 'Welcome to your new interactive. What will we call it?',
     }];
 
     return this.prompt(questions).then((answers) => {

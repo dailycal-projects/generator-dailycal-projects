@@ -1,33 +1,57 @@
-{%extends "base.html"%}
+{% macro jpg(name, alt='Image') %}
+<img
+  src="images/{{ name }}-1800.jpg"
+  srcset="images/{{ name }}-400.jpg 400w, images/{{ name }}-800.jpg 800w, images/{{ name }}-1200.jpg 1200w, images/{{ name }}-1800.jpg 1800w"
+  alt="{{ alt }}"
+/>
+{% endmacro %}
 
-{%block title%}
-<title>{{META.share.fbook.card_title}}</title>
-{%endblock%}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <meta charset="utf-8">
+        {%block title%}<title>The Daily Californian</title>{%endblock%}
+        {%include "meta/_icons.html"%}
 
-{%block header%}
+        {%include "meta/_social.html"%}
+        {% if env == 'production' %}
+        <link href="css/main-app.css" rel="stylesheet">
+        {% endif %}
+        
+        <!-- Google fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+        <!-- Font awesome -->
+        <script src="https://use.fontawesome.com/6c4d370962.js"></script>
+        <!-- jQuery -->
+        <script
+          src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+          integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+          crossorigin="anonymous">
+        </script>
+    </head>
 
-<header class="center">
-    <p class="category">
-        <a href="{{ARCHIE.category_link}}"" target="_blank">{{ARCHIE.category}}</a>
-    </p>
-    <h1>{{ARCHIE.headline}}</h1>
-    <p class="subhead">{{ARCHIE.subhead}}</p>
-    <div class="info">
-        <p>
-            By <span class="byline"><a href="###">First Lastname</a></span> and <span class="byline"><a href="###">First Lastname</a></span> <br /> <span class="timestamp"> <time datetime="{{META.timestamp}}">{{ARCHIE.dateline | upper}}</time></span>
-        </p>
-    </div>
-</header>
-<!-- <figure class="large no-gutters-phone">
-    <img src="https:placehold.it/800x600?text=lead+art+here" alt="An awesome picture" />
-    <figcaption>Your concise caption here. <figcredit>First Last | Photo service</figcaption>
-</figure> -->
-{%endblock%}
+    <body>
+      {% include "partials/_nav.html" %}
+      {% include "partials/_header.html" %}
 
-{%block content%}
+      <article class="container">
+        <p>Hi! To find more instructions on how to navigate this template of code, if you haven't included ArchieML support (this pulls specifically-formatted text from a Google Doc with shared settings of "Anyone with the link can view"), then add ArchieML support to this project for a copy of <a href="https://docs.google.com/document/d/1KimvJF9qiNHZ_gx32hhGanN639-JYVeMtFSsqa3w1Lk/edit">this Google Doc</a> that is appropriately shared. Or if you've added Archie configuration and provided a doc id, then in terminal, exit out of the current process and run `gulp archie`.</p>
 
-{% for section in ARCHIE.sections %}
-    {% include '_sections/' + section.type +'.html' %}
-{% endfor %}
+        {% for section in ARCHIE.sections %}
+            {% include '_sections/' + section.type +'.html' %}
+        {% endfor %}
+        <!-- Breakpoint reminder which you can delete -->
+        {% include "partials/_breakpoints.html" %}
+      </article>
+      {% include "partials/_footer.html" %}
+      <script type="text/javascript">window.tweetText = "{{META.share.twitter.share_tweet}}";</script>
+    </body>
+</html>
 
-{%endblock%}
+
+{% block js %}
+<script type="text/javascript" src="js/main-app.bundle.js"></script>
+<% if (ai2html) {%>{%include "partials/_ai2html-resizer.html"%}<%} %>
+{% endblock %}

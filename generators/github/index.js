@@ -1,10 +1,10 @@
 const Generator = require('yeoman-generator');
-const GitHubApi = require('github');
+const GitHubApi = require('@octokit/rest');
 const git = require('simple-git');
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
-const SecureKeys = require('secure-keys');
+const SecureKeys = require('secure-keys-dc');
 const chalk = require('chalk');
 
 module.exports = class extends Generator {
@@ -36,7 +36,7 @@ module.exports = class extends Generator {
 
   validateKeys() {
     this.secure = new SecureKeys({ secret: this.options.passphrase });
-    this.keyPath = path.join(os.homedir(), '.dailycal/projects-credentials.json');
+    this.keyPath = path.join(os.homedir(), '.dailycal/project-credentials.json');
 
     try {
       const keysObj = fs.readJsonSync(this.keyPath);

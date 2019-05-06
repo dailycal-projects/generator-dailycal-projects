@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 const fs = require('fs-extra');
 const os = require('os');
 const path = require('path');
-const SecureKeys = require('secure-keys');
+const SecureKeys = require('secure-keys-dc');
 const mkdirp = require('mkdirp');
 const chalk = require('chalk');
 
@@ -19,7 +19,7 @@ module.exports = class extends Generator {
 
   validateKeys() {
     this.secure = new SecureKeys({ secret: this.options.passphrase });
-    this.keyPath = path.join(os.homedir(), '.dailycal/projects-credentials.json');
+    this.keyPath = path.join(os.homedir(), '.dailycal/project-credentials.json');
 
     try {
       const keysObj = fs.readJsonSync(this.keyPath);
@@ -57,18 +57,8 @@ module.exports = class extends Generator {
       name: 'githubToken',
       message: 'What\'s your Github token?',
       when: a => a.write,
-    }, 
-    /*{
-      name: 'slackToken',
-      message: 'What\'s your Slack API token?',
-      when: a => a.write,
-    }, {
-      name: 'ngrokToken',
-      message: 'What\'s your ngrok token?',
-      when: a => a.write,
-    }*/
-    ];
-    
+    }];
+
     return this.validKeys ? null :
       this.prompt(questions).then((answers) => {
         this.answers = answers;
@@ -85,9 +75,7 @@ module.exports = class extends Generator {
       awsSecretKey: this.answers.awsSecretKey,
       googleClientId: this.answers.googleClientId,
       googleClientSecret: this.answers.googleClientSecret,
-      githubToken: this.answers.githubToken,
-      //slackToken: this.answers.slackToken,
-      //ngrokToken: this.answers.ngrokToken,
+      githubToken: this.answers.githubToken
     }));
   }
 
@@ -95,6 +83,6 @@ module.exports = class extends Generator {
     if (this.validKeys || !this.answers.write) return;
     this.log(
       'New keys encrypted and saved to',
-      chalk.yellow('~/.dailycal/projects-credentials.json.'));
+      chalk.yellow('~/.dailycal/project-credentials.json.'));
   }
 };

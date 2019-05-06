@@ -1,3 +1,60 @@
+0.8.0 / 2018-04-16
+==================
+
+* Update default styles to new [politico-style](https://github.com/The-Politico/politico-style) package.
+
+0.7.2 / 2018-01-30
+==================
+
+* Fix Twitter button on mobile
+
+0.7.0 / 2017-12-??
+==================
+
+  * Gives correct ACL permissions to files deployed to staging bucket
+  * Made image processing task synchronous so other tasks wait on it
+  * Changed production bucket name and URL routing for new POLITICO structure
+  * Built in rules for not gzipping videos
+  * Gitignore compiled dist files
+  * Changed JavaScript compiler to use [babel-preset-env](https://github.com/babel/babel/tree/master/packages/babel-preset-env) and [UglifyJS](https://github.com/mishoo/UglifyJS2).
+
+  NOTE: If you are using an older version of the generator, and you need to redeploy, you **must** adjust two files in order to deploy to production again.
+
+  First, in `gulp/tasks/aws.js`, change the production bucket to `interactives.politico.com`. Then, in `meta.json`, prepend your `publishPath` with `interactives/`.
+
+  ```
+    "publishPath": "interactives/2017/your-project-slug/",
+    "stagingUrl": "https://s3.amazonaws.com/staging.interactives.politico.com/interactives/2017/your-project-slug/index.html",
+    "url": "https://www.politico.com/interactives/2017/your-project-slug/",
+  ```
+
+
+
+0.6.1 / 2017-10-13
+==================
+
+  * CSS adjustments
+  * New Typekit [Politico Interactive 2.0] - kills Jubliat, adds Franklin
+  * Addition of supercube ads
+
+
+0.5.2 / 2017-09-08
+==================
+
+  * Allow for multiple dev servers to run on different ports
+  * Make Express router independent subgenerator in order to facilitate overwriting in dependent generators
+  * Hard exit Gulp commands
+
+0.5.1 / 2017-08-18
+=================
+
+  * Fix default meta tag templates
+
+0.5.0 / 2017-08-17
+=================
+
+  * Complete rewrite of dev server architecture to use Express and Webpack
+
 0.4.0 / 2017-07-16
 ==================
 
